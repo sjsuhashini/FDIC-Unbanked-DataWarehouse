@@ -1,0 +1,1122 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/28/2026 9:00:34 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-0895M21"
+  DTS:CreatorName="DESKTOP-0895M21\maniv"
+  DTS:DTSID="{E1CBABF0-70C3-49C8-A88C-07C214FFF858}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="57"
+  DTS:VersionGUID="{74F74319-F3FD-48A1-BDA3-7B0CDA464690}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-0895M21\PROD500.FDIC_BankingDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{032D3D60-7E46-4116-938B-0FED50B8DAD2}"
+      DTS:ObjectName="DESKTOP-0895M21\PROD500.FDIC_BankingDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-0895M21\PROD500;Initial Catalog=FDIC_BankingDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{032D3D60-7E46-4116-938B-0FED50B8DAD2}DESKTOP-0895M21\PROD500.FDIC_BankingDW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{E05CF710-B088-43D4-AE57-0A9661CDA1A0}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::FileFullPath]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\FDIC\">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CategoryType"
+              DTS:DTSID="{77E16519-5296-4D64-89F8-5105FB547034}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CategoryValue"
+              DTS:DTSID="{3CB124AA-64C6-41DD-981C-9A97B76B88F8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Households_in_thousands"
+              DTS:DTSID="{A257EA35-2E3C-402C-8D82-B1320BB17C7F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Unbanked"
+              DTS:DTSID="{99F790D1-D7CD-444E-B505-9ED96BCB5C91}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7BE1E721-AC73-468F-B358-D997F2C2695A}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::FolderPath]+&quot;\\&quot;+ @[User::FileName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileFullPath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\FDIC\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{711EEC33-1A6D-4B35-8519-F55A1E001E8E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5E4851B4-0F45-43B3-B17C-3AAAEADF6DF2}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FolderPath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\FDIC</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{54FA366C-B5E9-4381-AFF9-C52EAC18308A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="IsFileAlreadyLoaded">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{197D642C-1CE0-440F-95B3-4773898341B4}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="YearInt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3AFF5209-1B85-4144-A1F7-FB7928317DC1}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="SUBSTRING( @[User::FileName],10,4 )"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="YearString">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load DimCategory"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{26588723-E700-4B9A-9A66-897884AA1905}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load DimCategory"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{032D3D60-7E46-4116-938B-0FED50B8DAD2}"
+          SQLTask:SqlStatementSource="INSERT INTO DimCategory (CategoryType, CategoryValue)&#xA;SELECT DISTINCT&#xA;       s.CategoryType,&#xA;       s.CategoryValue&#xA;FROM Stage_UnbankedRaw s&#xA;LEFT JOIN DimCategory d&#xA;       ON s.CategoryType = d.CategoryType&#xA;      AND s.CategoryValue = d.CategoryValue&#xA;WHERE d.CategoryKey IS NULL&#xA;order by CategoryType;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load DimYear"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{962793D0-0449-4B56-B39C-280BBCFC8019}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load DimYear"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{032D3D60-7E46-4116-938B-0FED50B8DAD2}"
+          SQLTask:SqlStatementSource="INSERT INTO DimYear (YearKey, Year)&#xA;SELECT DISTINCT&#xA;       s.Year,&#xA;       s.Year&#xA;FROM Stage_UnbankedRaw s&#xA;LEFT JOIN DimYear d&#xA;       ON s.Year = d.Year&#xA;WHERE d.Year IS NULL;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load FactTable"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{7596EF3F-0009-47A9-AAC8-0A189A2F83F2}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load FactTable"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{032D3D60-7E46-4116-938B-0FED50B8DAD2}"
+          SQLTask:SqlStatementSource="INSERT INTO FactUnbankedHouseholds&#xA;(&#xA;    YearKey,&#xA;    CategoryKey,&#xA;    Households,&#xA;    Unbanked_Pct&#xA;)&#xA;SELECT *&#xA;FROM&#xA;(&#xA;    SELECT&#xA;        y.YearKey,&#xA;        c.CategoryKey,&#xA;        s.Households,&#xA;        s.Unbanked_Pct&#xA;      &#xA;    FROM Stage_UnbankedRaw s&#xA;    JOIN DimYear y&#xA;        ON y.Year = s.Year&#xA;    JOIN DimCategory c&#xA;        ON c.CategoryType = s.CategoryType&#xA;       AND c.CategoryValue = s.CategoryValue&#xA;) src&#xA;WHERE NOT EXISTS&#xA;(&#xA;    SELECT 1&#xA;    FROM FactUnbankedHouseholds f&#xA;    WHERE f.YearKey = src.YearKey&#xA;      AND f.CategoryKey = src.CategoryKey&#xA;);&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Loop all csv files in a directory"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{F3A3585E-3BBC-4B55-90F1-67C3F400898F}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Loop all csv files in a directory">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{1E575A55-A389-4F3F-81E8-C064DA05014B}"
+        DTS:ObjectName="{1E575A55-A389-4F3F-81E8-C064DA05014B}">
+        <DTS:PropertyExpression
+          DTS:Name="Directory">@[User::FolderPath]</DTS:PropertyExpression>
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="D:\FDIC" />
+            <FEFEProperty
+              FileSpec="*.csv" />
+            <FEFEProperty
+              FileNameRetrievalType="1" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Loop all csv files in a directory\Check if new file"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{8E4E290F-FB06-450C-B982-30DBDDC5FE4A}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Check if new file"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{032D3D60-7E46-4116-938B-0FED50B8DAD2}"
+              SQLTask:SqlStatementSource="SELECT COUNT(*)&#xA;FROM ETL_RunLog&#xA;WHERE FileName = ?"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::IsFileAlreadyLoaded" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::FileName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Loop all csv files in a directory\Load ETL_Log file"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{928F5BC5-20AC-4B71-92CA-678376AD2B39}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load ETL_Log file"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{032D3D60-7E46-4116-938B-0FED50B8DAD2}"
+              SQLTask:SqlStatementSource="IF NOT EXISTS (&#xA;    SELECT 1 FROM ETL_RunLog WHERE FileName = ?&#xA;)&#xA;INSERT INTO ETL_RunLog(FileName, Year)&#xA;VALUES (?, ?)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::FileName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::FileName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::YearString"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Loop all csv files in a directory\Load Stage Table"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{865D22A8-2E83-4B13-AA23-9E81686F450A}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load Stage Table"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Loop all csv files in a directory\Load Stage Table\Add Year Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Add Year Column"
+                  usesDispositions="true"
+                  validateExternalMetadata="False">
+                  <inputs>
+                    <input
+                      refId="Package\Loop all csv files in a directory\Load Stage Table\Add Year Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Loop all csv files in a directory\Load Stage Table\Add Year Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Loop all csv files in a directory\Load Stage Table\Add Year Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\Add Year Column.Outputs[Derived Column Output].Columns[Year]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Loop all csv files in a directory\Load Stage Table\Add Year Column.Outputs[Derived Column Output].Columns[Year]"
+                          name="Year"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_I4)[SUBSTRING](@[User::FileName],10,4)</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_I4)SUBSTRING(@[User::FileName],10,4)</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Loop all csv files in a directory\Load Stage Table\Add Year Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Loop all csv files in a directory\Load Stage Table\Add Year Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\Add Year Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Loop all csv files in a directory\Load Stage Table\Add Year Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\Add Year Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Loop all csv files in a directory\Load Stage Table\Add Year Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="1033"
+                  name="Flat file raw data"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">true</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                      connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Output].Columns[CategoryType]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Output].ExternalColumns[CategoryType]"
+                          length="17"
+                          lineageId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Output].Columns[CategoryType]"
+                          name="CategoryType"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Output].Columns[CategoryValue]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Output].ExternalColumns[CategoryValue]"
+                          length="41"
+                          lineageId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Output].Columns[CategoryValue]"
+                          name="CategoryValue"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Output].Columns[Households_in_thousands]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Output].ExternalColumns[Households_in_thousands]"
+                          length="10"
+                          lineageId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Output].Columns[Households_in_thousands]"
+                          name="Households_in_thousands"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Output].Columns[Unbanked]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Output].ExternalColumns[Unbanked]"
+                          lineageId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Output].Columns[Unbanked]"
+                          name="Unbanked"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Output].ExternalColumns[CategoryType]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="CategoryType" />
+                        <externalMetadataColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Output].ExternalColumns[CategoryValue]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="CategoryValue" />
+                        <externalMetadataColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Output].ExternalColumns[Households_in_thousands]"
+                          dataType="i4"
+                          name="Households_in_thousands" />
+                        <externalMetadataColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Output].ExternalColumns[Unbanked]"
+                          dataType="r4"
+                          name="Unbanked" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Staging table"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Stage_UnbankedRaw]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-0895M21\PROD500.FDIC_BankingDW]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-0895M21\PROD500.FDIC_BankingDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Inputs[OLE DB Destination Input].Columns[CategoryType]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="17"
+                          cachedName="CategoryType"
+                          externalMetadataColumnId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Inputs[OLE DB Destination Input].ExternalColumns[CategoryType]"
+                          lineageId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Output].Columns[CategoryType]" />
+                        <inputColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Inputs[OLE DB Destination Input].Columns[CategoryValue]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="41"
+                          cachedName="CategoryValue"
+                          externalMetadataColumnId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Inputs[OLE DB Destination Input].ExternalColumns[CategoryValue]"
+                          lineageId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Output].Columns[CategoryValue]" />
+                        <inputColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Inputs[OLE DB Destination Input].Columns[Year]"
+                          cachedDataType="i4"
+                          cachedName="Year"
+                          externalMetadataColumnId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                          lineageId="Package\Loop all csv files in a directory\Load Stage Table\Add Year Column.Outputs[Derived Column Output].Columns[Year]" />
+                        <inputColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Inputs[OLE DB Destination Input].Columns[Households_in_thousands]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="Households_in_thousands"
+                          externalMetadataColumnId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Inputs[OLE DB Destination Input].ExternalColumns[Households]"
+                          lineageId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Output].Columns[Households_in_thousands]" />
+                        <inputColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Inputs[OLE DB Destination Input].Columns[Unbanked]"
+                          cachedDataType="i4"
+                          cachedName="Unbanked"
+                          externalMetadataColumnId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Inputs[OLE DB Destination Input].ExternalColumns[Unbanked_Pct]"
+                          lineageId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Output].Columns[Unbanked]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                          dataType="i4"
+                          name="Year" />
+                        <externalMetadataColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Inputs[OLE DB Destination Input].ExternalColumns[CategoryType]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CategoryType" />
+                        <externalMetadataColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Inputs[OLE DB Destination Input].ExternalColumns[CategoryValue]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="CategoryValue" />
+                        <externalMetadataColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Inputs[OLE DB Destination Input].ExternalColumns[Households]"
+                          dataType="i4"
+                          name="Households" />
+                        <externalMetadataColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Inputs[OLE DB Destination Input].ExternalColumns[Unbanked_Pct]"
+                          dataType="numeric"
+                          name="Unbanked_Pct"
+                          precision="5"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Loop all csv files in a directory\Load Stage Table.Paths[Derived Column Output]"
+                  endId="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Loop all csv files in a directory\Load Stage Table\Add Year Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Loop all csv files in a directory\Load Stage Table.Paths[Flat File Source Output]"
+                  endId="Package\Loop all csv files in a directory\Load Stage Table\Add Year Column.Inputs[Derived Column Input]"
+                  name="Flat File Source Output"
+                  startId="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data.Outputs[Flat File Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Loop all csv files in a directory.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{8CB48869-74AC-4D8F-92D3-81D3BE8B221E}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::IsFileAlreadyLoaded]==0"
+          DTS:From="Package\Loop all csv files in a directory\Check if new file"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Loop all csv files in a directory\Load Stage Table" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Loop all csv files in a directory.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{D716FDFC-6617-4335-9449-58C04C4AF27B}"
+          DTS:From="Package\Loop all csv files in a directory\Load Stage Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Loop all csv files in a directory\Load ETL_Log file" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{089E84F9-CA86-41D8-8B9E-D731C74B901B}"
+          DTS:ObjectName="{089E84F9-CA86-41D8-8B9E-D731C74B901B}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::FileName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate staging table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{133D24B0-2E9B-4848-9FE6-C23DDF144BCF}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate staging table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{032D3D60-7E46-4116-938B-0FED50B8DAD2}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE Stage_UnbankedRaw;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{A11854AD-2B84-49A3-9B0A-07E1570ED6FE}"
+      DTS:From="Package\Loop all csv files in a directory"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load DimYear" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{B2AEB93D-FA8B-4CC7-8AED-BE941B5AEFE6}"
+      DTS:From="Package\Load DimYear"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Load DimCategory" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{E8127E88-2498-4F56-99B2-9283115EACA4}"
+      DTS:From="Package\Load DimCategory"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Load FactTable" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{9BB84DA2-F7AE-4CB3-9395-041081338DFD}"
+      DTS:From="Package\Load FactTable"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Truncate staging table" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\Load DimCategory"
+          TopLeft="286.607143467254,360.176470272526" />
+        <NodeLayout
+          Size="144,41.6"
+          Id="Package\Load DimYear"
+          TopLeft="294.464286341122,300.52941150128" />
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\Load FactTable"
+          TopLeft="283.035714888223,425.941176097233" />
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\Loop all csv files in a directory\Load Stage Table"
+          TopLeft="69.7857144225618,78.9647056195975" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Loop all csv files in a directory\Check if new file"
+          TopLeft="64.5428577434653,6.89411751970286" />
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\Loop all csv files in a directory\Load ETL_Log file"
+          TopLeft="70.9714291857213,160.635293856232" />
+        <EdgeLayout
+          Id="Package\Loop all csv files in a directory.PrecedenceConstraints[Constraint 2]"
+          TopLeft="150.778571804142,120.564705619598">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.0705882366348"
+              Start="0,0"
+              End="0,32.5705882366348">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5705882366348" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loop all csv files in a directory.PrecedenceConstraints[Constraint]"
+          TopLeft="147.764286083014,48.4941175197029">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.4705880998947"
+              Start="0,0"
+              End="0,22.9705880998947">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.9705880998947" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,3.48529404994734,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="312,220.8"
+          Size="312,264"
+          Id="Package\Loop all csv files in a directory"
+          TopLeft="209.285714731228,24.4705882138445" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="370.821429177738,401.776470272526">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24.1647058247073"
+              Start="0,0"
+              End="0,16.6647058247073">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.6647058247073" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="294.464286341122,321.32941150128">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-7.85714287386855,59.6470587712458"
+              Start="0,0"
+              End="-15.3571428738686,59.6470587712458">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-26.3571428738686,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-26.3571428738686,0"
+                    Point2="-30.3571428738686,0"
+                    Point3="-30.3571428738686,4" />
+                  <mssgle:LineSegment
+                    End="-30.3571428738686,55.6470587712458" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-30.3571428738686,55.6470587712458"
+                    Point2="-30.3571428738686,59.6470587712458"
+                    Point3="-26.3571428738686,59.6470587712458" />
+                  <mssgle:LineSegment
+                    End="-15.3571428738686,59.6470587712458" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="184,41.6"
+          Id="Package\Truncate staging table"
+          TopLeft="282.321429172417,487.905882001706" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="283.035714888223,446.741176097233">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-0.714285715806056,61.9647059044727"
+              Start="0,0"
+              End="-8.21428571580606,61.9647059044727">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-19.2142857158061,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-19.2142857158061,0"
+                    Point2="-23.2142857158061,0"
+                    Point3="-23.2142857158061,4" />
+                  <mssgle:LineSegment
+                    End="-23.2142857158061,57.9647059044727" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-23.2142857158061,57.9647059044727"
+                    Point2="-23.2142857158061,61.9647059044727"
+                    Point3="-19.2142857158061,61.9647059044727" />
+                  <mssgle:LineSegment
+                    End="-8.21428571580606,61.9647059044727" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="365.285714731228,288.470588213845">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="73.1785716098945,32.8588232874357"
+              Start="0,0"
+              End="65.6785716098945,32.8588232874357">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.8588232874357" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.8588232874357"
+                    Point2="0,32.8588232874357"
+                    Point3="4,32.8588232874357" />
+                  <mssgle:LineSegment
+                    End="65.6785716098945,32.8588232874357" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Loop all csv files in a directory\Load Stage Table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="157.6,41.6"
+          Id="Package\Loop all csv files in a directory\Load Stage Table\Flat file raw data"
+          TopLeft="327.857143555065,94.0588234469655" />
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\Loop all csv files in a directory\Load Stage Table\Add Year Column"
+          TopLeft="322.142857828615,185.823529248883" />
+        <NodeLayout
+          Size="179.2,41.6"
+          Id="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table"
+          TopLeft="322.142857828615,324.235293833442" />
+        <EdgeLayout
+          Id="Package\Loop all csv files in a directory\Load Stage Table.Paths[Flat File Source Output]"
+          TopLeft="404.40000069184,135.658823446965">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.1647058019175"
+              Start="0,0"
+              End="0,42.6647058019175">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.6647058019175" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loop all csv files in a directory\Load Stage Table.Paths[Derived Column Output]"
+          TopLeft="402.142857828615,227.423529248883">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.60000000000002,96.811764584559"
+              Start="0,0"
+              End="9.60000000000002,89.311764584559">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.4058822922795" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44.4058822922795"
+                    Point2="0,48.4058822922795"
+                    Point3="4,48.4058822922795" />
+                  <mssgle:LineSegment
+                    End="5.60000000000002,48.4058822922795" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.60000000000002,48.4058822922795"
+                    Point2="9.60000000000002,48.4058822922795"
+                    Point3="9.60000000000002,52.4058822922795" />
+                  <mssgle:LineSegment
+                    End="9.60000000000002,89.311764584559" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loop all csv files in a directory\Load Stage Table\OLE DB Staging table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

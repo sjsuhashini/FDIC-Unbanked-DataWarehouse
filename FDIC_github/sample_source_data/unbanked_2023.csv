@@ -1,0 +1,27 @@
+CategoryType,CategoryValue,Households_in_thousands,Unbanked
+AllHouseholds,AllHouseholds,133682000,4.2
+Ethnicity,Black,17251000,10.6
+Ethnicity,Hispanic,19760000,9.5
+Ethnicity,Asian,7317000,2
+Ethnicity,American Indian or Alaska Native,943000,12.2
+Ethnicity,Native Hawaiian or Other Pacific Islander,408000,4.8
+Ethnicity,White,86004000,1.9
+Ethnicity,Two or More Races,1999000,2.5
+AgeGroup ,15 to 24 years,6255000,5.9
+AgeGroup ,25 to 34 years,21230000,5.2
+AgeGroup ,35 to 44 years,23266000,4.7
+AgeGroup ,45 to 54 years,21685000,4.3
+AgeGroup ,55 to 64 years,23876000,4.4
+AgeGroup ,65 years or more,37370000,2.9
+Education ,No high school diploma,9907000,19.7
+Education ,High school diploma,32349000,6.5
+Education ,Some college,36707000,3
+Education ,College degree,54719000,0.8
+EmploymentStatus ,Employed,82738000,2.8
+EmploymentStatus ,Unemployed,2881000,13.2
+EmploymentStatus ,Not in labor force,48063000,6.1
+FamilyIncome ,Less than 15000,10982000,21.8
+FamilyIncome ,15000 to 30000,15223000,9
+FamilyIncome ,30000 to 50000,22698000,4.5
+FamilyIncome ,50000 to 75000,23891000,1.8
+FamilyIncome ,At least 75000,60887000,0.7
