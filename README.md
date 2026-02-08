@@ -8,9 +8,9 @@ Architecture
 CSV Files → SSIS ETL → Staging Tables → Dimensions → Fact Table → SQL Views/KPIs → Power BI Dashboards
 
 Tech Stack
-SQL Server
-SSIS (SQL Server Integration Services)
-T-SQL
-Star Schema Modeling
-Window Functions
-Power BI
+*SQL Server
+*SSIS (SQL Server Integration Services)
+*T-SQL
+*Star Schema Modeling
+*Window Functions
+*Power BI
